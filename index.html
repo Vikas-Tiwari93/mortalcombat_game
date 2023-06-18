@@ -10,6 +10,9 @@
         box-sizing: border-box;
         margin: 0px;
         padding: 0px;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
       }
       body {
         box-sizing: border-box;
@@ -18,9 +21,6 @@
         justify-content: center;
         align-items: center;
         background-color: rgb(30, 30, 30);
-        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-          sans-serif;
       }
       #health {
         position: absolute;
@@ -79,7 +79,7 @@
         align-items: center;
         gap: 20px;
       }
-      #playgame div {
+      .playstyle {
         width: 40%;
         height: 90%;
         border: 1px solid white;
@@ -91,10 +91,51 @@
         align-items: center;
         justify-content: center;
       }
+      #playerinfo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #selectavatar {
+        visibility: hidden;
+        position: absolute;
+        top: 0px;
+        right: -210px;
+        width: 200px;
+        height: 140px;
+        background-color: white;
+        border-radius: 12px;
+        border: 1px solid rgb(54, 54, 54);
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        padding: 7px;
+        background-color: rgba(244, 20, 20, 0.767);
+      }
+      #selectavatar div {
+        background-color: rgba(255, 255, 255, 0.883);
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+      }
+      #selectavatar div:hover {
+        background-color: rgba(250, 85, 85, 0.767);
+      }
       #choosetime button {
         width: 200px;
         height: 50px;
         border-radius: 10px;
+      }
+      button:hover {
+        cursor: pointer;
+      }
+      img:hover {
+        cursor: pointer;
+      }
+      input::placeholder {
+        letter-spacing: 2px;
       }
       #selected {
         background-color: yellow;
@@ -130,17 +171,176 @@
   </head>
   <body>
     <section id="playgame">
-      <div id="choosetime">
+      <div id="choosetime" class="playstyle">
         <button onclick="onemin(event)" id="selected">1 minute</button
         ><button onclick="twomin(event)">2 minute</button
         ><button onclick="threemin(event)">3 minute</button>
         <button onclick="playfn()" id="play">Play</button>
       </div>
-      <div id="playerinfo"></div>
+      <div id="playerinfo" class="playstyle">
+        <div
+          style="
+            position: relative;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.829);
+            padding: 5px;
+          "
+        >
+          <div id="selectavatar">
+            <div onclick="selectfn1()">
+              <img
+                src="./images/pngegg.png"
+                alt=""
+                style="
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div onclick="selectfn2()">
+              <img
+                src="./images/pngegg (1).png"
+                alt=""
+                style="
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: contain;
+                "
+              />
+            </div>
+            <div onclick="selectfn3()">
+              <img
+                src="./images/pngegg (2).png"
+                alt=""
+                style="
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div onclick="selectfn4()">
+              <img
+                src="./images/pngegg (3).png"
+                alt=""
+                style="
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div onclick="selectfn5()">
+              <img
+                src="./images/pngegg (4).png"
+                alt=""
+                style="
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: cover;
+                "
+              />
+            </div>
+            <div onclick="selectfn6()">
+              <img
+                src="./images/pngegg (5).png"
+                alt=""
+                style="
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 50%;
+                  object-fit: cover;
+                "
+              />
+            </div>
+          </div>
+          <img
+            src="./images/pngegg (5).png"
+            alt=""
+            title="Select an avatar"
+            style="
+              width: 70px;
+              height: 70px;
+              border-radius: 50%;
+              object-fit: contain;
+            "
+            onclick="avatarfn()"
+            id="userimg"
+          />
+        </div>
+        <div>
+          <input
+            id="fightername"
+            type="text"
+            placeholder=" Fighters Name"
+            title="Give us ur name"
+            style="width: 240px; height: 50px; border-radius: 12px"
+          />
+        </div>
+        <div>
+          <input
+            id="warcry"
+            type="text"
+            placeholder=" Your War Cry"
+            title="Give us your warcry"
+            style="width: 240px; height: 50px; border-radius: 12px"
+          />
+        </div>
+      </div>
     </section>
-    <section id="gameover" class="gameover">You loose !!!</section>
-    <section id="youwin" class="gameover">you win !!!</section>
+    <section id="gameover" class="gameover">You loose !!! :</section>
+    <section id="youwin" class="gameover">you win !!! :</section>
     <header id="health">
+      <div
+        style="
+          position: absolute;
+          left: 20px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.829);
+          padding: 5px;
+        "
+      >
+        <img
+          src="./images/pngegg (5).png"
+          alt=""
+          id="userimgplay"
+          style="
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            visibility: hidden;
+          "
+        />
+      </div>
+      <div
+        style="
+          position: absolute;
+          right: 20px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.829);
+          padding: 5px;
+        "
+      >
+        <img
+          src=""
+          alt=""
+          id="enemyimg"
+          style="
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: contain;
+            visibility: hidden;
+          "
+        />
+      </div>
       <div id="player">
         <progress id="playerprog" max="100" value="80"></progress>
       </div>
@@ -153,4 +353,7 @@
   </body>
 </html>
 <script src="./index.js"></script>
-<script src="./js.js" type="module"></script>
+
+<script src="./canvas.js"></script>
+<script src="./js.js"></script>
+<script src="./eventlisteners.js"></script>
