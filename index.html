@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
+      * {
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+      }
       body {
         box-sizing: border-box;
         height: 97vh;
@@ -13,11 +18,139 @@
         justify-content: center;
         align-items: center;
         background-color: rgb(30, 30, 30);
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+          sans-serif;
+      }
+      #health {
+        position: absolute;
+        top: 20px;
+        left: 0px;
+        right: 0px;
+        height: 60px;
+        border: 3px solid rgb(20, 45, 20);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+        background-color: rgb(59, 59, 59);
+      }
+      #player {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35%;
+        height: 30px;
+        border: 2px solid red;
+      }
+      #timer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 70px;
+        height: 50px;
+        border: 2px solid red;
+        color: white;
+        font-size: 18px;
+      }
+      #enemy {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 35%;
+        height: 30px;
+        border: 2px solid red;
+      }
+      progress {
+        width: 90%;
+      }
+      #enemyprog {
+        transform: rotate(180deg);
+      }
+      #playgame {
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 20%;
+        height: 400px;
+        background-color: blueviolet;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+      }
+      #playgame div {
+        width: 40%;
+        height: 90%;
+        border: 1px solid white;
+        gap: 10px;
+      }
+      #choosetime {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      #choosetime button {
+        width: 200px;
+        height: 50px;
+        border-radius: 10px;
+      }
+      #selected {
+        background-color: yellow;
+        color: black;
+      }
+      #choosetime #play {
+        margin-top: 50px;
+        width: 250px;
+      }
+      #play:hover {
+        background-color: green;
+      }
+      .gameover {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 40px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 20%;
+        height: 400px;
+        background-color: blueviolet;
+      }
+      #gameover {
+        visibility: hidden;
+      }
+      #youwin {
+        visibility: hidden;
       }
     </style>
   </head>
   <body>
+    <section id="playgame">
+      <div id="choosetime">
+        <button onclick="onemin(event)" id="selected">1 minute</button
+        ><button onclick="twomin(event)">2 minute</button
+        ><button onclick="threemin(event)">3 minute</button>
+        <button onclick="playfn()" id="play">Play</button>
+      </div>
+      <div id="playerinfo"></div>
+    </section>
+    <section id="gameover" class="gameover">You loose !!!</section>
+    <section id="youwin" class="gameover">you win !!!</section>
+    <header id="health">
+      <div id="player">
+        <progress id="playerprog" max="100" value="80"></progress>
+      </div>
+      <div id="timer"></div>
+      <div id="enemy">
+        <progress id="enemyprog" max="100" value="80"></progress>
+      </div>
+    </header>
     <canvas width="1200" height="580"></canvas>
   </body>
 </html>
-<script src="./js.js"></script>
+<script src="./index.js"></script>
+<script src="./js.js" type="module"></script>
