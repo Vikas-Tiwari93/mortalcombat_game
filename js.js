@@ -1,24 +1,65 @@
+import { bgsprite, sprite } from "./canvas.js";
+import { keys } from "./eventlisteners.js";
 let canvas = document.querySelector("canvas");
-const c = canvas.getContext("2d");
-console.log(canvas.style.width);
+export const c = canvas.getContext("2d");
+
 c.fillRect(0, 0, 1200, 800);
 //player creation
-const gravity = 0.4;
+export const gravity = 0.4;
 
 const background = new bgsprite(
   { x: 0, y: 0 },
   "./images/The Dawn/building_woods_light.png",
   1.15,
-  1
+  1,
+  { x: 0, y: 0 }
 );
-const player = new sprite({ x: 60, y: 0 }, { x: 0, y: 0 }, "red", {
-  x: 0,
-  y: 0,
-});
-const enemy = new sprite({ x: 800, y: 0 }, { x: 0, y: 0 }, "blue", {
-  x: 80,
-  y: 0,
-});
+export const player = new sprite(
+  { x: 60, y: 0 },
+  { x: 0, y: 0 },
+  "red",
+  "./mysprites/huntress(1)/Idle.png",
+  2.5,
+  8,
+  {
+    x: 100,
+    y: 150,
+  },
+  {
+    run: { src: "./mysprites/huntress(1)/Run.png", frames: 8 },
+    jump: { src: "./mysprites/huntress(1)/Jump.png", frames: 2 },
+    idle: { src: "./mysprites/huntress(1)/Idle.png", frames: 8 },
+    attack: { src: "./mysprites/huntress(1)/Attack2.png", frames: 5 },
+    specialAttack: { src: "./mysprites/huntress(1)/Attack3.png", frames: 7 },
+    block: { src: "./mysprites/huntress(1)/Attack1.png", frames: 5 },
+    attacked: { src: "./mysprites/huntress(1)/Take hit.png", frames: 3 },
+    death: { src: "./mysprites/huntress(1)/Death.png", frames: 8 },
+  }
+);
+export const enemy = new sprite(
+  { x: 800, y: 0 },
+  { x: 0, y: 0 },
+  "blue",
+
+  "mysprites/huntress(1)/Idle.png",
+  2.5,
+  8,
+  {
+    x: -80,
+    y: 150,
+  },
+  {
+    run: { src: "./mysprites/huntress(1)/Run.png", frames: 8 },
+    jump: { src: "./mysprites/huntress(1)/Jump.png", frames: 2 },
+    idle: { src: "./mysprites/huntress(1)/Idle.png", frames: 8 },
+    attack: { src: "./mysprites/huntress(1)/Attack2.png", frames: 5 },
+    specialAttack: { src: "./mysprites/huntress(1)/Attack3.png", frames: 7 },
+    block: { src: "./mysprites/huntress(1)/Attack1.png", frames: 5 },
+    attacked: { src: "./mysprites/huntress(1)/Take hit.png", frames: 3 },
+    death: { src: "./mysprites/huntress(1)/Death.png", frames: 8 },
+  }
+  // { run: "", jump: "", idle: "", attack: "", specialAttack: "", block: "" }
+);
 
 function animation() {
   window.requestAnimationFrame(animation);
@@ -30,10 +71,10 @@ function animation() {
   player.velocity.x = 0;
   //player movement
   if (keys.ArrowRight === true) {
-    player.velocity.x = 3;
+    player.velocity.x = 5;
   }
   if (keys.ArrowLeft === true) {
-    player.velocity.x = -3;
+    player.velocity.x = -5;
   }
   if (keys[" "] === true) {
     player.velocity.y = -10;

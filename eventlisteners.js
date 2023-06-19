@@ -1,4 +1,5 @@
-const keys = {
+import { player, enemy } from "./js.js";
+export const keys = {
   ArrowLeft: false,
   ArrowRight: false,
   " ": false,
