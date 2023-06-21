@@ -1,5 +1,6 @@
 import { bgsprite, sprite } from "./canvas.js";
 import { keys } from "./eventlisteners.js";
+import { changesprites } from "./changingsprites.js";
 let canvas = document.querySelector("canvas");
 export const c = canvas.getContext("2d");
 
@@ -28,6 +29,7 @@ export const player = new sprite(
   {
     run: { src: "./mysprites/huntress(1)/Run.png", frames: 8 },
     jump: { src: "./mysprites/huntress(1)/Jump.png", frames: 2 },
+    fall: { src: "./mysprites/huntress(1)/Fall.png", frames: 2 },
     idle: { src: "./mysprites/huntress(1)/Idle.png", frames: 8 },
     attack: { src: "./mysprites/huntress(1)/Attack2.png", frames: 5 },
     specialAttack: { src: "./mysprites/huntress(1)/Attack3.png", frames: 7 },
@@ -51,6 +53,7 @@ export const enemy = new sprite(
   {
     run: { src: "./mysprites/huntress(1)/Run.png", frames: 8 },
     jump: { src: "./mysprites/huntress(1)/Jump.png", frames: 2 },
+    fall: { src: "./mysprites/huntress(1)/Fall.png", frames: 2 },
     idle: { src: "./mysprites/huntress(1)/Idle.png", frames: 8 },
     attack: { src: "./mysprites/huntress(1)/Attack2.png", frames: 5 },
     specialAttack: { src: "./mysprites/huntress(1)/Attack3.png", frames: 7 },
@@ -70,14 +73,33 @@ function animation() {
   enemy.updatedraw();
   player.velocity.x = 0;
   //player movement
+  changesprites("idle");
   if (keys.ArrowRight === true) {
+    changesprites("run");
     player.velocity.x = 5;
   }
   if (keys.ArrowLeft === true) {
+    changesprites("run");
     player.velocity.x = -5;
   }
+  if (keys.z === true) {
+    changesprites("attack");
+    player.velocity.x = 3;
+  }
+  if (keys.x === true) {
+    changesprites("block");
+    player.velocity.x = 0;
+  }
+  if (keys.c === true) {
+    changesprites("special");
+    player.velocity.x = 1;
+  }
   if (keys[" "] === true) {
+    changesprites("jump");
     player.velocity.y = -10;
+  }
+  if (player.velocity.y > 0) {
+    changesprites("fall");
   }
 
   //enemy movement

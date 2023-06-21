@@ -1,4 +1,4 @@
-import { player, enemy } from "./js.js";
+import { player, enemy } from "./js2.js";
 export const keys = {
   ArrowLeft: false,
   ArrowRight: false,
@@ -22,6 +22,9 @@ window.addEventListener("keydown", (e) => {
     enemy.attack();
   } else if (e.key === "c") {
     keys.c = true;
+    enemy.attack();
+  } else if (e.key === "x") {
+    keys.x = true;
     player.defend();
   }
 });
@@ -36,5 +39,7 @@ window.addEventListener("keyup", (e) => {
     keys.z = false;
   } else if (e.key === "c") {
     keys.c = false;
+  } else if (e.key === "x") {
+    keys.x = false;
   }
 });
