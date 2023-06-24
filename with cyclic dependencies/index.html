@@ -162,6 +162,24 @@
         height: 400px;
         background-color: blueviolet;
       }
+      .round {
+        visibility: hidden;
+        overflow: hidden;
+        border: 1px solid rgba(228, 19, 19, 0.42);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 40px;
+        position: absolute;
+        left: 0px;
+        right: 0px;
+        top: 40%;
+        height: 100px;
+        background-color: rgba(137, 43, 226, 0.303);
+        transition: 0.4s ease-in-out;
+      }
+
       #gameover {
         visibility: hidden;
       }
@@ -177,6 +195,22 @@
         ><button onclick="twomin(event)">2 minute</button
         ><button onclick="threemin(event)">3 minute</button>
         <button onclick="playfn()" id="play">Play</button>
+        <audio
+          style="display: none"
+          autoplay
+          controls
+          loop
+          src="./sound/openingmusic.mp3"
+          id="music"
+        ></audio>
+        <audio
+          style="display: none"
+          autoplay
+          controls
+          loop
+          src="./sound/mixkit-abstract-wind-howl-interior-1275.wav"
+          id="music2"
+        ></audio>
       </div>
       <div id="playerinfo" class="playstyle">
         <div
@@ -295,6 +329,9 @@
         </div>
       </div>
     </section>
+    <section id="round1" class="round">Round 1</section>
+    <section id="round2" class="round">Round 2</section>
+    <section id="round3" class="round">Round 3</section>
     <section id="gameover" class="gameover">You loose !!! :</section>
     <section id="youwin" class="gameover">you win !!! :</section>
     <header id="health">
@@ -351,12 +388,16 @@
       </div>
     </header>
     <canvas width="1200" height="580"></canvas>
+    <audio src="./sound/R1.mp3" id="gamesound" style="display: none"></audio>
   </body>
 </html>
+
 <script src="./index.js"></script>
+
 <!-- <script type="module" src="./canvas.js"></script> -->
 <script src="./js.js" type="module"></script>
-
+<script src="./sounds.js"></script>
+<script src="./roundfunctions.js"></script>
 <!-- 
 <script src="./eventlisteners.js" type="module"></script> -->
 <!-- <script src="./changingsprites.js" type="module"></script> -->

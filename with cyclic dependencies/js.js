@@ -158,7 +158,20 @@ function animation() {
     let playerhealth = document.getElementById("playerprog").value;
     document.getElementById("playerprog").value = playerhealth - 10;
   }
-  //enemy movement with players movement
+  // next round new states
+  if (
+    document.getElementById("enemyprog").value === 0 ||
+    document.getElementById("timer").innerText === "0:0"
+  ) {
+    setTimeout(() => {
+      player.position.x = 60;
+      player.velocity.y = 0;
+      player.position.y = -50;
+      enemy.position.x = 800;
+      enemy.velocity.y = 0;
+      enemy.position.y = -50;
+    }, 2000);
+  }
   enemymodel();
 }
 animation();

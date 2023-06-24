@@ -109,15 +109,14 @@ export class sprite extends bgsprite {
   }
   attack() {
     this.isattacking = true;
-    console.log("attacked");
+
     setTimeout(() => {
       this.isattacking = false;
-      console.log("i stop");
     }, 200);
   }
   defend() {
     this.isdefending = true;
-    console.log("defend");
+
     setTimeout(() => {
       this.isdefending = false;
     }, 200);
